@@ -66,7 +66,7 @@ public class Do_<M,A> {
         }));
     }
 
-    public <S,X1,X2,Y> Do_<M,T2<S,Y>> maT2(Leibniz<A,T2<T2<S,X1>,X2>> leibniz, F2<X1,X2,Y> f) {
+    public <S,X1,X2,Y> Do_<M,T2<S,Y>> map2(Leibniz<A,T2<T2<S,X1>,X2>> leibniz, F2<X1,X2,Y> f) {
         return create(impl().map((A a) -> {
             T2<T2<S,X1>,X2> x = leibniz.coerce(a);
             return T2.of(x._1()._1(), f.apply(x._1()._2(), x._2()));
