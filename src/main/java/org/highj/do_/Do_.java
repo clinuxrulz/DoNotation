@@ -25,10 +25,17 @@ public class Do_<M,A> {
         return _impl;
     }
 
-    public <S,Y> __<M,Y> run(Leibniz<A,T2<S,Y>> leibniz, MonadRec<M> mMonadRec) {
+    public <S,Y> __<M,Y> runWithResult(Leibniz<A,T2<S,Y>> leibniz, MonadRec<M> mMonadRec) {
         return mMonadRec.map(
             (A a) -> leibniz.coerce(a)._2(),
             DoIndexed.run(mMonadRec, impl())
+        );
+    }
+
+    public __<M,T0> runNoResult(MonadRec<M> mMonadRec) {
+        return mMonadRec.rightSeq(
+            DoIndexed.run(mMonadRec, impl()),
+            mMonadRec.pure(T0.of())
         );
     }
 
